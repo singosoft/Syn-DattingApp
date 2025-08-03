@@ -14,6 +14,8 @@ builder.Services.AddDbContext<AppDbContext>(
     }
 );
 
+builder.Services.AddCors();
+
 builder.Services.AddEndpointsApiExplorer();       
 builder.Services.AddSwaggerGen();                 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -34,6 +36,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200","https://localhost:4200"));
 
 app.MapControllers();
 
