@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Authorize]
+    
     public class MembersController(AppDbContext context) : BaseApiController
     {
+        
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers()
         {
@@ -16,7 +17,7 @@ namespace API.Controllers
             return Ok(members);
         }
 
-        [AllowAnonymous]
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetMember(string id)
         {
